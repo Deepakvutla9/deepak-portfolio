@@ -6,39 +6,54 @@ import { SectionLabel } from "./Reveal";
 const projects = [
   {
     title: "Project Aurora",
-    tag: "Web Platform",
+    tag: "Full-Stack Web Platform",
+    role: "Solo Full-Stack Developer",
     year: "Available on Request",
     accent: "linear-gradient(135deg,#8b5cf6,#ff8a5c)",
     emoji: "✦",
-    blurb: "A full-stack web platform pairing thoughtful UX with intelligent matching.",
+    blurb: "A full-stack web platform pairing thoughtful UX with AI-powered matching.",
     challenge:
-      "A people-first marketplace where the right connections were buried under noise and manual effort.",
+      "A people-first marketplace where the right connections were buried under noise and slow, manual searching.",
     process:
-      "Shaped the information architecture, designed a structured data model, and layered intelligent ranking so users reach the right result with less friction.",
+      "I designed the information architecture and data model, then layered AI-powered ranking so users reach the right result with far less friction.",
     solution:
-      "A responsive, real-time web app with a clean dashboard and smart, context-aware results.",
-    results: ["Faster discovery", "Structured data layer", "Intelligent ranking"],
-    stack: ["React", "Modern Web", "AI Matching"],
+      "A responsive, real-time web app with a clean dashboard, rich profiles, and smart, context-aware results.",
+    did: [
+      "Built the full app end-to-end in React + Vite — UI, state, and data flow",
+      "Designed the database schema and auth on a Supabase (Postgres) backend",
+      "Integrated the Gemini API to power natural-language matching & ranking",
+      "Implemented responsive, accessible layouts and a real-time dashboard",
+    ],
+    results: ["Faster discovery", "Structured data layer", "AI-driven matching"],
+    stack: ["React", "Vite", "Supabase", "Gemini API", "Tailwind"],
   },
   {
     title: "Project Atlas",
     tag: "Desktop Automation",
+    role: "Solo Developer — Desktop & Automation",
     year: "Available on Request",
     accent: "linear-gradient(135deg,#46e7ff,#8b5cf6)",
     emoji: "◆",
     blurb: "A cross-platform desktop tool that automates repetitive, high-volume workflows.",
     challenge:
-      "A daily workflow drowning in repetitive manual steps — slow, tedious, and easy to get wrong.",
+      "A daily workflow drowning in repetitive manual steps — slow, tedious, and error-prone.",
     process:
-      "Built an automation engine that handles the busywork while keeping a human in the loop for the decisions that actually matter.",
+      "I built an automation engine that handles the busywork while keeping a human in the loop for the decisions that actually matter.",
     solution:
-      "A desktop application orchestrating a reliable pipeline behind a calm monitoring interface.",
+      "A cross-platform Electron desktop app orchestrating a reliable pipeline behind a calm monitoring interface.",
+    did: [
+      "Architected and built a cross-platform desktop app with Electron",
+      "Engineered an automation pipeline that processes tasks at scale",
+      "Designed a monitoring UI with live status, logs, and a full audit trail",
+      "Handled packaging, error recovery, and human-in-the-loop checkpoints",
+    ],
     results: ["Hours saved daily", "Higher throughput", "Full audit trail"],
-    stack: ["Desktop", "Automation", "Workflow"],
+    stack: ["Electron", "Node.js", "JavaScript", "Automation"],
   },
   {
     title: "Project Echo",
-    tag: "Conversational AI",
+    tag: "Conversational Voice AI",
+    role: "AI / Front-End Developer",
     year: "Available on Request",
     accent: "linear-gradient(135deg,#ff8a5c,#ff5cad)",
     emoji: "❖",
@@ -46,15 +61,22 @@ const projects = [
     challenge:
       "Voice interfaces that felt stiff and impersonal — and underserved certain users entirely.",
     process:
-      "Engineered a conversation flow around real intent, balancing reasoning with expressive, natural-sounding speech.",
+      "I engineered a conversation flow around real intent, balancing LLM reasoning with expressive, natural-sounding speech.",
     solution:
       "A real-time voice interface with fluid turn-taking, intent handling, and confident task completion.",
+    did: [
+      "Built the real-time voice UI in React with live speech in/out",
+      "Integrated LLMs (Gemini) for reasoning and intent recognition",
+      "Wired up speech-to-text and natural TTS for expressive responses",
+      "Designed the dialogue flow, fallbacks, and task-completion logic",
+    ],
     results: ["Natural conversation", "Inclusive by design", "Reliable task flow"],
-    stack: ["Voice AI", "Real-time", "Conversational"],
+    stack: ["React", "Gemini API", "Voice AI", "Speech / TTS"],
   },
   {
     title: "Project Vesper",
-    tag: "Optimization Engine",
+    tag: "Monitoring & Optimization Engine",
+    role: "Backend / Automation Developer",
     year: "Available on Request",
     accent: "linear-gradient(135deg,#c6ff3f,#46e7ff)",
     emoji: "✺",
@@ -62,11 +84,17 @@ const projects = [
     challenge:
       "A scarce resource that required constant manual watching to ever catch a good opening.",
     process:
-      "Built a monitoring layer that continuously evaluates availability and ranks options against user preferences.",
+      "I built a monitoring layer that continuously evaluates availability and ranks options against user preferences.",
     solution:
-      "A lightweight engine that does the watching and the deciding, so people don't have to.",
+      "A lightweight Node engine that does the watching and the deciding, so people don't have to.",
+    did: [
+      "Built a resilient data-collection & monitoring engine in Node.js",
+      "Wrote a scoring algorithm to rank options by user-defined preferences",
+      "Added scheduling, retries, and notifications for hands-off running",
+      "Optimized for reliability and low resource usage over long sessions",
+    ],
     results: ["Zero manual watching", "Optimal selection", "Time reclaimed"],
-    stack: ["Node", "Monitoring", "Optimization"],
+    stack: ["Node.js", "Web Scraping", "Algorithms", "Automation"],
   },
 ];
 
@@ -167,6 +195,11 @@ export default function Projects() {
                 <h3 className="mt-2 font-display text-4xl font-bold">
                   {open.title}
                 </h3>
+                {open.role && (
+                  <span className="mt-3 inline-flex items-center gap-2 rounded-full border border-purple/30 bg-purple/10 px-4 py-1.5 text-sm font-medium text-purple-glow">
+                    <span>◷</span> My Role: {open.role}
+                  </span>
+                )}
 
                 {[
                   ["The Challenge", open.challenge],
@@ -180,6 +213,25 @@ export default function Projects() {
                     <p className="mt-2 leading-relaxed text-white/65">{b}</p>
                   </div>
                 ))}
+
+                {open.did && (
+                  <div className="mt-8 rounded-2xl border border-white/[0.07] bg-white/[0.02] p-6">
+                    <h4 className="text-sm uppercase tracking-wider text-warm">
+                      What I Did
+                    </h4>
+                    <ul className="mt-4 space-y-3">
+                      {open.did.map((d) => (
+                        <li
+                          key={d}
+                          className="flex items-start gap-3 text-[15px] leading-relaxed text-white/80"
+                        >
+                          <span className="mt-1 text-purple-glow">▹</span>
+                          <span>{d}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
 
                 <div className="mt-7">
                   <h4 className="text-sm uppercase tracking-wider text-purple-glow">
@@ -197,15 +249,20 @@ export default function Projects() {
                   </div>
                 </div>
 
-                <div className="mt-7 flex flex-wrap gap-2">
-                  {open.stack.map((s) => (
-                    <span
-                      key={s}
-                      className="rounded-full border border-white/10 px-3 py-1 text-xs text-white/55"
-                    >
-                      {s}
-                    </span>
-                  ))}
+                <div className="mt-7">
+                  <h4 className="text-sm uppercase tracking-wider text-purple-glow">
+                    Built With
+                  </h4>
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    {open.stack.map((s) => (
+                      <span
+                        key={s}
+                        className="rounded-full border border-white/10 px-3 py-1.5 text-xs text-white/70"
+                      >
+                        {s}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
             </motion.div>
